@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: usage-worker
+
+  kafka:
+    bootstrap-servers: kafka:9092
+    consumer:
+      group-id: usage-worker-group
+      auto-offset-reset: earliest
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+    properties:
+      spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+      spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+      spring.json.trusted.packages: "*"
+      spring.json.value.default.type: api.kafka.UsageEvent
+      spring.json.use.type.headers: false
+
+stripe:
+  api-key: ${STRIPE_API_KEY}
