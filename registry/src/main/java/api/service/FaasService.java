@@ -24,7 +24,7 @@ public class FaasService {
   public void saveMetrics(MetricsEvent event) {
     List<Faas> metricsToSave = buildMetrics(event);
     faasRepository.saveAll(metricsToSave);
-    log.debug("Saved {} metrics for func={}", metricsToSave.size(), event.getFuncName());
+    log.debug("Saved {} metrics for func={}", metricsToSave.size());
   }
 
   public Map<String, Object> getFaas() {
@@ -55,7 +55,7 @@ public class FaasService {
   private List<Faas> buildMetrics(MetricsEvent event) {
     return event.toMetricsMap().entrySet().stream()
         .filter(e -> e.getValue() != null && e.getValue() != 0)
-        .map(e -> new Faas(null, event.getFuncName(), e.getKey(), e.getValue(), null))
+        .map(e -> new Faas(null, "hello", e.getKey(), e.getValue(), null))
         .toList();
   }
 

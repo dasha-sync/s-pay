@@ -11,9 +11,13 @@ import java.util.Optional;
 
 @Repository
 public interface BillingSubscriptionRepository extends JpaRepository<BillingSubscription, Long> {
+
   Optional<BillingSubscription> findByStatus(BillingSubscription.SubscriptionStatus status);
 
   boolean existsBy();
 
   BillingSubscription findFirstByOrderByIdAsc();
+
+  Optional<BillingSubscription> findTopByStatus(BillingSubscription.SubscriptionStatus subscriptionStatus);
 }
+

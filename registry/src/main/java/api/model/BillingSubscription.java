@@ -2,6 +2,8 @@ package api.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -9,6 +11,8 @@ import java.time.LocalDateTime;
 @Data
 @Table(name = "billing_subscriptions")
 @Entity
+@Getter
+@Setter
 public class BillingSubscription {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
